@@ -14,8 +14,12 @@ use App\Http\Controllers\busquedaController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [busquedaController::class, 'inicio'])->name('inicio');
+/*Route::get('/test', function(){
+    return 'hola';
+})->name('inicio');*/
 
 Route::post('buscar/{nombre?}', [BusquedaController::class, 'buscarActor'])->name('buscar');
+
+
+Route::post('buscar/peliculas/{id?}', [BusquedaController::class, 'buscarPeliculaActor'])->name('actorPelicula');

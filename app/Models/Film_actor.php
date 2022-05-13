@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Film extends Model
+class Film_actor extends Model
 {
     use HasFactory;
-    protected $table = 'film';
-    protected $fillable = ['title', 'description'];
+    protected $table = 'film_actor';
+    //protected $fillable = ['actor', 'description'];
     //TODO=>Relaciones
 }
