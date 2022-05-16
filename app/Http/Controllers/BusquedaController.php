@@ -38,14 +38,23 @@ class busquedaController extends Controller
     public function buscarPeliculaActor($id)
     {
 
-        $peliculas_id = Film_actor::select('film_id')
+        /*$peliculas_id = Film_actor::select('film_id')
             ->where('actor_id', $id)
+            ->get()
+            ->map(function ($peliculas_id){
+                return $peliculas_id->film_id;
+            });
+        //dd($peliculas_id);
+
+        $peliculas = Film:: whereIn('film_id', $peliculas_id)
+        ->get();*/
+        $peliculas=Actor::find(1)
+            ->films()
+            //->where('actor_id', $id)
             ->get();
-        dd($peliculas_id);
 
-        $peliculas = Film:: where('film_id', $peliculas_id->film_id)
-        ->get();
-
-        dd($peliculas);
+        //dd($peliculas);
+        //dd($peliculas);
+        return view( 'peliculas_actores', compact('peliculas'));
     }
 }

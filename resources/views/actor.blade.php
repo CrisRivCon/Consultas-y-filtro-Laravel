@@ -14,7 +14,7 @@
             <tbody id="cuerpo_tabla">
     @foreach ($actores as $actor)
                 <tr>
-                    <th scope="row"></th>
+                    <th scope="row">{{$actor->actor_id}}</th>
                     <td >{{$actor->first_name}}</td>
                     <td >{{$actor->last_name}}</td>
                     <td class="text-center">
@@ -29,7 +29,8 @@
                         <form method="POST" action="{{route('actorPelicula', $actor->actor_id)}}">
                             @csrf
                                 <button class="btn btn-light" data-toggle="modal" data-target="#ver_peliculas">Ver Peliculas</button>
-    {{--</div>          </form>
+                        </form>
+    {{--</div>
 </div>
 </div>--}}
 </td>
