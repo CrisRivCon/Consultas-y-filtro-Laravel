@@ -12,7 +12,9 @@
             </tr>
             </thead>
             <tbody id="cuerpo_tabla">
+
     @foreach ($peliculas as $pelicula)
+
                 <tr>
                     <th scope="row">{{$pelicula->film_id}}</th>
                     <td >{{$pelicula->title}}</td>

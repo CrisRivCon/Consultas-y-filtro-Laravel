@@ -15,6 +15,7 @@ class Actor extends Model
     //TODO=>Relaciones
     public function films()
     {
-        return $this->belongsToMany(Film::class, 'film_actor', 'actor_id', 'film_id', 'actor_id','film_id');
+         return $this->hasMany(Film_actor::class,'actor_id','actor_id');
+         //return $this->belongsToMany(Film::class, 'film_actor', 'actor_id', 'film_id', 'actor_id','film_id');
     }
 }

@@ -48,7 +48,7 @@ class busquedaController extends Controller
 
         $peliculas = Film:: whereIn('film_id', $peliculas_id)
         ->get();*/
-        $peliculas=Actor::find(1)
+        $peliculas=Actor::find($id)
             ->films()
             //->where('actor_id', $id)
             ->get();
@@ -56,5 +56,10 @@ class busquedaController extends Controller
         //dd($peliculas);
         //dd($peliculas);
         return view( 'peliculas_actores', compact('peliculas'));
+    }
+    public function eliminarActor($id)
+    {
+        Actor::findOrFail($id)->delete();
+        return back();
     }
 }

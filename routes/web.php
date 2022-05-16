@@ -23,3 +23,5 @@ Route::post('buscar/{nombre?}', [BusquedaController::class, 'buscarActor'])->nam
 
 
 Route::post('buscar/peliculas/{id?}', [BusquedaController::class, 'buscarPeliculaActor'])->name('actorPelicula');
+
+Route::delete('eliminar/{id}', [BusquedaController::class, 'eliminarActor'])->name('eliminarActor');

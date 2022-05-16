@@ -12,11 +12,12 @@
             </tr>
             </thead>
             <tbody id="cuerpo_tabla">
-    @foreach ($peliculas as $pelicula)
+    @foreach ($peliculas as $film_actor)
+
                 <tr>
-                    <th scope="row">{{$pelicula->film_id}}</th>
-                    <td >{{$pelicula->title}}</td>
-                    <td >{{$pelicula->release_year}}</td>
+                    <th scope="row">{{$film_actor->film->film_id}}</th>
+                    <td >{{$film_actor->film->title}}</td>
+                    <td >{{$film_actor->film->release_year}}</td>
                     {{--<td class="text-center">
                         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                             <div class="btn-group" role="group">

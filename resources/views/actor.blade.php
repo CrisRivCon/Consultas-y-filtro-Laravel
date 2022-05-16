@@ -18,30 +18,37 @@
                     <td >{{$actor->first_name}}</td>
                     <td >{{$actor->last_name}}</td>
                     <td class="text-center">
-                    {{--<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                         <div class="btn-group" role="group">
                             <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 Opciones
                             </button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#editar_actor">Editar</a>
-                                <a class="dropdown-item"  href="#" data-toggle="modal" data-target="#eliminar_actor">Eliminar</a>--}}
-                        <form method="POST" action="{{route('actorPelicula', $actor->actor_id)}}">
-                            @csrf
-                                <button class="btn btn-light" data-toggle="modal" data-target="#ver_peliculas">Ver Peliculas</button>
-                        </form>
-    {{--</div>
-</div>
-</div>--}}
-</td>
-</tr>
+                                <form method="POST" action="{{route('actorPelicula', $actor->actor_id)}}">
+                                    @csrf
+                                    <button class="dropdown-item btn btn-light">Editar</button>
+                                </form>
+                                <form method="POST" action="{{route('eliminarActor', $actor->actor_id)}}">
+                                    {{ @method_field('DELETE') }}
+                                    @csrf
+                                    <button class="dropdown-item btn btn-light">Eliminar</button>
+                                </form>
+                                <form method="POST" action="{{route('actorPelicula', $actor->actor_id)}}">
+                                    @csrf
+                                    <button class="dropdown-item btn btn-light">Ver Peliculas</button>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                </tr>
 
-@endforeach
-</tbody>
-</table>
-@else
-<p class="text-white">No hay coincidencias.</p>
-</div>
-@endif
+            @endforeach
+            </tbody>
+        </table>
+        @else
+        <p class="text-white">No hay coincidencias.</p>
+    </div>
+    @endif
 
 @endsection
