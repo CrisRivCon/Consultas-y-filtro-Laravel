@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\busquedaController;
+use App\Http\Controllers\ActorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use App\Http\Controllers\busquedaController;
 |
 */
 
-Route::get('/', [busquedaController::class, 'inicio'])->name('inicio');
+Route::get('/', [ActorController::class, 'index'])->name('inicio');
 /*Route::get('/test', function(){
     return 'hola';
 })->name('inicio');*/
@@ -24,4 +25,11 @@ Route::post('buscar/{nombre?}', [BusquedaController::class, 'buscarActor'])->nam
 
 Route::post('buscar/peliculas/{id?}', [BusquedaController::class, 'buscarPeliculaActor'])->name('actorPelicula');
 
-Route::delete('eliminar/{id}', [BusquedaController::class, 'eliminarActor'])->name('eliminarActor');
+Route::delete('eliminar/{id}', [ActorController::class, 'destroy'])->name('eliminarActor');
+
+Route::post('editar/{id}', [ActorController::class, 'edit'])->name('mostrarActor');
+Route::post('actualizar/{id}', [ActorController::class, 'update'])->name('actualizarActor');
+Route::get('crear-actor', [ActorController::class, 'create'])->name('crearActor');
+Route::post('guardar/', [ActorController::class, 'store'])->name('guardarActor');
+
+

@@ -10,7 +10,7 @@ class Actor extends Model
     use HasFactory;
     protected $table = 'actor';
     protected $primaryKey = 'actor_id';
-    protected $fillable = ['first_name', 'last_name'];
+    protected $fillable = ['first_name', 'last_name', 'updated_at'];
 
     //TODO=>Relaciones
     public function films()

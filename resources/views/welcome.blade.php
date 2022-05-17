@@ -39,7 +39,9 @@
             @endif
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-info pt-3 pb-3">
-                    <a class="navbar-brand text-light" href="{{route('inicio')}}">Actores y Peliculas</a>
+                    <a class="navbar-brand text-light" href="{{route('inicio')}}">Incio</a>
+                    <a class="navbar-brand text-light" href="{{route('crearActor')}}">Añadir Actor</a>
+
                     {{--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon text-muted"></span>
                     </button>
