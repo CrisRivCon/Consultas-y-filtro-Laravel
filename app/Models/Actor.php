@@ -11,6 +11,7 @@ class Actor extends Model
     protected $table = 'actor';
     protected $primaryKey = 'actor_id';
     protected $fillable = ['first_name', 'last_name', 'updated_at'];
+    public $timestamps = false;
 
     //TODO=>Relaciones
     public function films()
