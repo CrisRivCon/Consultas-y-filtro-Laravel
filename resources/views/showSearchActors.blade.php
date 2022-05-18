@@ -24,19 +24,22 @@
                                 Opciones
                             </button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <form method="POST" action="{{route('mostrarActor', $actor->actor_id)}}">
+                                <form method="get" action="{{route('mostrarActor', $actor->actor_id)}}">
                                     @csrf
                                     <button class="dropdown-item btn btn-light">Editar</button>
                                 </form>
-                                <form method="POST" action="{{route('eliminarActor', $actor->actor_id)}}">
+                                <a class="dropdown-item btn btn-light" href="{{route('eliminarActor',$actor->actor_id)}}">Eliminar</a>
+                             {{--   <form method="POST" action="{{route('eliminarActor', $actor->actor_id)}}">
                                     {{ @method_field('DELETE') }}
                                     @csrf
                                     <button class="dropdown-item btn btn-light">Eliminar</button>
-                                </form>
-                                <form method="POST" action="{{route('actorPelicula', $actor->actor_id)}}">
+                                </form>--}}
+                                <a class="dropdown-item btn btn-light" href="{{route('actorPelicula', $actor->actor_id)}}">Ver peliculas</a>
+
+                                {{--<form method="POST" action="{{route('actorPelicula', $actor->actor_id)}}">
                                     @csrf
                                     <button class="dropdown-item btn btn-light">Ver Peliculas</button>
-                                </form>
+                                </form>--}}
                             </div>
                         </div>
                         </div>

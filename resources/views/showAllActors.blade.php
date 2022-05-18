@@ -1,6 +1,10 @@
 @extends('welcome')
 @section('tabla')
+
     <div class="row mt-3 p-md-2 table-responsive-md" id="tabla">
+        @if(session()->has('error'))
+            <p style="color:red">{{ session()->get('error') }}</p>
+        @endif
         @if($actores->count()> 0)
         <table class="table table-hover table-striped  table-info p-md-3 m-3 m-md-2 text-white">
             <thead class="bg-info">
@@ -28,15 +32,17 @@
                                     @csrf
                                     <button class="dropdown-item btn btn-light">Editar</button>
                                 </form>
-                                <form method="POST" action="{{route('eliminarActor', $actor->actor_id)}}">
+                                <a class="dropdown-item btn btn-light" href="{{route('eliminarActor',$actor->actor_id)}}">Eliminar</a>
+                               {{-- <form method="POST" action="{{route('eliminarActor', $actor->actor_id)}}">
                                     {{ @method_field('DELETE') }}
                                     @csrf
                                     <button class="dropdown-item btn btn-light">Eliminar</button>
-                                </form>
-                                <form method="POST" action="{{route('actorPelicula', $actor->actor_id)}}">
+                                </form>--}}
+                                <a class="dropdown-item btn btn-light" href="{{route('actorPelicula', $actor->actor_id)}}">Ver peliculas</a>
+                                {{--<form method="POST" action="{{route('actorPelicula', $actor->actor_id)}}">
                                     @csrf
                                     <button class="dropdown-item btn btn-light">Ver Peliculas</button>
-                                </form>
+                                </form>--}}
                             </div>
                         </div>
                         </div>

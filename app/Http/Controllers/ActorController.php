@@ -14,9 +14,9 @@ class ActorController extends Controller
      */
     public function index()
     {
-        $actores = Actor::all();
+        $actores = Actor::orderBy('actor_id','desc')->get();
             //->orderBy('actor_id', 'desc'); //Me da error al intentar ordenarlo de manera descendente
-        return view('todos', compact('actores'));
+        return view('showAllActors', compact('actores'));
     }
 
     /**
@@ -37,7 +37,11 @@ class ActorController extends Controller
      */
     public function store(Request $request)
     {
-        Actor::create($request->all());
+        Actor::create($request->all()); //cuidado con eso
+        /*Actor::create([
+           'first_name'=> $request->firstname,
+           'last_name'=> $request->firstname ,
+        ]);*/
         return redirect()->route('inicio');
     }
 
@@ -61,7 +65,9 @@ class ActorController extends Controller
     public function edit($id)
     {
         $actor = Actor::findOrFail($id);
-        return view('actor', compact('actor'));
+
+
+        return view('editActor', compact('actor'));
     }
 
     /**
@@ -73,8 +79,17 @@ class ActorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $actor = Actor::find($id);
+        /*if($actor){
+            $actor->first_namme = '...',
+            $actor->last_namme = '...',
+            $actor->save();
+//controlar id
+        }else{
+            //...
+        }*/
         Actor::findOrFail($id)
-            ->update($request->all());
+            ->update($request->all()); //Esto es peligroso
         return redirect()->route('inicio');
     }
 
@@ -86,8 +101,16 @@ class ActorController extends Controller
      */
     public function destroy($id)
     {
-        Actor::findOrFail($id)
-            ->delete();
-        return redirect()->action([ActorController::class, 'index']);
+        $actor = Actor::find($id);
+        if($actor){
+            $actor->delete();
+            return redirect()->back(); // aqui hace redireccion get
+        }else{
+
+            session()->flash('error','Ha ocurrido un error');
+            return redirect()->back();
+        }
+        //Mucho texto return redirect()->action([ActorController::class, 'index']);
+        //return redirect()->route('inicio');//Aprovecha los name de las rutas :)
     }
 }
