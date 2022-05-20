@@ -1,6 +1,28 @@
 @extends('welcome')
 @section('tabla')
-
+    <form method="POST" action="{{route('buscar')}}">
+        @csrf
+        <div class="row bg-info text-light pt-3 pb-3 justify-center mx-0">
+            <div class="actores col-6">
+                <p> Actor</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Nombre</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="" name="nombre" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Apellido</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="" name="apellido" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="input-group m-2 justify-center" role="group" aria-label="Basic example">
+                <button type="submit" class="btn btn-light">Buscar</button>
+            </div>
+        </div>
+    </form>
     <div class="row mt-3 p-md-2 table-responsive-md" id="tabla">
         @if(session()->has('error'))
             <p style="color:red">{{ session()->get('error') }}</p>
@@ -28,7 +50,7 @@
                                 Opciones
                             </button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <form method="POST" action="{{route('mostrarActor', $actor->actor_id)}}">
+                                <form method="get" action="{{route('mostrarActor', $actor->actor_id)}}">
                                     @csrf
                                     <button class="dropdown-item btn btn-light">Editar</button>
                                 </form>

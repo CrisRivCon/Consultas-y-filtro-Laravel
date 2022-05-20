@@ -20,7 +20,10 @@ Route::get('/', [ActorController::class, 'index'])->name('inicio');
     return 'hola';
 })->name('inicio');*/
 
-Route::post('buscar/{nombre?}/{apellido?}/{titulo?}/{ano?}', [BusquedaController::class, 'buscarActor'])->name('buscar');
+Route::post('buscar/{nombre?}/{apellido?}', [BusquedaController::class, 'buscarActor'])->name('buscar');
+
+Route::get('peliculas', [BusquedaController::class, 'showPeliculas'])->name('showPeliculas');
+Route::get('buscar/pelicula/{titulo?}/{ano?}', [BusquedaController::class, 'buscarPelicula'])->name('buscarPelicula');
 
 
 Route::get('buscar/peliculas/{id?}', [BusquedaController::class, 'buscarPeliculaActor'])->name('actorPelicula');

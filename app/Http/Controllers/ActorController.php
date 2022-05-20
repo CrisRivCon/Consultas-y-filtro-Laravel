@@ -64,10 +64,16 @@ class ActorController extends Controller
      */
     public function edit($id)
     {
-        $actor = Actor::findOrFail($id);
+        $actor = Actor::find($id);
+        if ($actor){
+            return view('editActor', compact('actor'));
+        }else{
+            session()->flash('error','Ha ocurrido un error');
+            return redirect()->back();
+        }
 
 
-        return view('editActor', compact('actor'));
+
     }
 
     /**
@@ -79,8 +85,8 @@ class ActorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $actor = Actor::find($id);
-        /*if($actor){
+        /*$actor = Actor::find($id);
+        if($actor){
             $actor->first_namme = '...',
             $actor->last_namme = '...',
             $actor->save();
@@ -88,9 +94,18 @@ class ActorController extends Controller
         }else{
             //...
         }*/
-        Actor::findOrFail($id)
-            ->update($request->all()); //Esto es peligroso
-        return redirect()->route('inicio');
+        $actor = Actor::find($id);
+        if ($actor){
+            $actor->first_name = $request->first_name;
+            $actor->last_name = $request->last_name;
+            $actor->save();
+            //update($request->all()); //Esto es peligroso
+            return redirect()->route('inicio');
+        }else{
+            session()->flash('error','Ha ocurrido un error');
+            return redirect()->back();
+        }
+
     }
 
     /**

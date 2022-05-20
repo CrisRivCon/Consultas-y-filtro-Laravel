@@ -9,11 +9,13 @@ class Film extends Model
 {
     use HasFactory;
     protected $table = 'film';
+    protected $primaryKey = 'film_id';
     protected $fillable = ['title', 'description'];
 
     //TODO=>Relaciones
-    public function actors()
+    public function actores()
     {
-        return $this->belongsToMany(Actor::class, 'film_actor');
+        return $this->hasMany(Film_actor::class, 'film_id', 'film_id');
+        //return $this->belongsToMany(Film_actor::class, 'film_actor');
     }
 }

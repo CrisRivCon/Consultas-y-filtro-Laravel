@@ -39,7 +39,8 @@
             @endif
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-info pt-3 pb-3">
-                    <a class="navbar-brand text-light" href="{{route('inicio')}}">Incio</a>
+                    <a class="navbar-brand text-light" href="{{route('inicio')}}">Actores</a>
+                    <a class="navbar-brand text-light" href="{{route('showPeliculas')}}">Peliculas</a>
                     <a class="navbar-brand text-light" href="{{route('crearActor')}}">Añadir Actor</a>
 
                     {{--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,44 +64,7 @@
                         </ul>
                     </div>--}}
                 </nav>
-                <form method="POST" action="{{route('buscar')}}">
-                    @csrf
-                <div class="row bg-info text-light pt-3 pb-3 justify-center mx-0">
-                    <div class="actores col-6">
-                        <p> Actor</p>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Nombre</span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="" name="nombre" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Apellido</span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="" name="apellido" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
-                    </div>
-                    <div class="peliculas col-6">
-                        <p> Pelicula</p>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Título</span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="" name="titulo" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Año</span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="" name="ano" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
-                    </div>
-                    <div class="btn-group m-2" role="group" aria-label="Basic example">
-                        <button type="submit" class="btn btn-light">Buscar</button>
-                    </div>
-                </div>
-                    </form>
+
             @yield('tabla')
             </div>
 
