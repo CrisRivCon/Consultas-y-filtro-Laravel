@@ -16,7 +16,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Año</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="" name="ano" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="" name="anno" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </div>
             <div class="input-group m-2 justify-center" role="group" aria-label="Basic example">

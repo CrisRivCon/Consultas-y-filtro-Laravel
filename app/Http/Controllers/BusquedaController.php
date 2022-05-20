@@ -18,14 +18,19 @@ class busquedaController extends Controller
         $nombre = $request->nombre;
         $apellido = $request->apellido;
         $actores = DB::table('actor')->select('*');
-        if($nombre){
-            $actores->where('first_name', 'LIKE', '%'.$nombre.'%');
+        if ($nombre || $apellido){
+            if($nombre){
+                $actores->where('first_name', 'LIKE', '%'.$nombre.'%');
+            }
+            if($apellido){
+                $actores->where('last_name', 'LIKE', '%'.$apellido.'%');
+            }
+            $actores= $actores->get();
+            return view('showSearchActors', compact('actores'));
+        }else{
+            session()->flash('error','No hay parametros que buscar');
+            return redirect()->back();
         }
-        if($apellido){
-            $actores->where('last_name', 'LIKE', '%'.$apellido.'%');
-        }
-        $actores= $actores->get();
-        return view('showSearchActors', compact('actores'));
 
     }
     public function showPeliculas()
@@ -37,14 +42,19 @@ class busquedaController extends Controller
         $titulo = $request->titulo;
         $anno = $request->anno;
         $peliculas = DB::table('film')->select('*');
-        if($titulo){
-            $peliculas->where('title', 'LIKE', '%'.$titulo.'%');
+        if ($titulo || $anno){
+            if($titulo){
+                $peliculas->where('title', 'LIKE', '%'.$titulo.'%');
+            }
+            if($anno){
+                $peliculas->where('release_year', 'LIKE', '%'.$anno.'%');
+            }
+            $peliculas= $peliculas->get();
+            return view('showSearchFilms', compact('peliculas'));
+        }else{
+            session()->flash('error','No hay parametros que buscar');
+            return redirect()->back();
         }
-        if($anno){
-            $peliculas->where('release_year', 'LIKE', '%'.$anno.'%');
-        }
-        $peliculas= $peliculas->get();
-        return view('showSearchFilms', compact('peliculas'));
     }
     public function buscarPeliculaActor($id)
     {
