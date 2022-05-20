@@ -37,7 +37,11 @@ class ActorController extends Controller
      */
     public function store(Request $request)
     {
-        Actor::create($request->all()); //cuidado con eso
+        Actor::create([
+            'first_name' => $request->first_name,
+            'last_name'=> $request->last_name]);
+
+        //cuidado con eso
         /*Actor::create([
            'first_name'=> $request->firstname,
            'last_name'=> $request->firstname ,

@@ -24,6 +24,9 @@
         </div>
     </form>
     <div class="row mt-3 p-md-2 table-responsive-md" id="tabla">
+        @if(session()->has('error'))
+            <p style="color:red">{{ session()->get('error') }}</p>
+        @endif
         @if($actores->count()> 0)
         <table class="table table-hover table-striped  table-info p-md-3 m-3 m-md-2 text-white">
             <thead class="bg-info">
